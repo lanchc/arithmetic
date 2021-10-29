@@ -3,10 +3,10 @@
 # @explain  arithmetic
 import os
 import time
+import shutil
 import random
 import datetime
 from docx import Document
-from docx.oxml.ns import qn
 from docx.shared import Pt, RGBColor
 from docx.enum.table import WD_TABLE_ALIGNMENT
 
@@ -28,6 +28,13 @@ def docx_rename():
     return project_root_dir() + '/dist/' + time_name + '.docx'
 
 
+# 检查创建文件夹
+def checkup_dir(path):
+    if os.path.exists(path):
+        shutil.rmtree(path)
+    os.mkdir(path)
+
+
 # 计算结果
 def compute_symbol(a, b, k):
     if k == '-':
@@ -40,11 +47,11 @@ def compute_symbol(a, b, k):
 def format_topic_text(a, b, c, d):
     style_rd = random.randint(1, 3)
     if 1 == style_rd:
-        return '{0: >2} {1:} {2: >2} = ____'.format(int(a), str(b), int(c), int(d))
+        return '{0: >2} {1:} {2: >2} = (   )'.format(int(a), str(b), int(c), int(d))
     elif 2 == style_rd:
-        return '____ {1:} {2: >2} = {3: >2}'.format(int(a), str(b), int(c), int(d))
+        return '(   ) {1:} {2: >2} = {3: >2}'.format(int(a), str(b), int(c), int(d))
     elif 3 == style_rd:
-        return '{0: >2} {1:} ____ = {3: >2}'.format(int(a), str(b), int(c), int(d))
+        return '{0: >2} {1:} (   ) = {3: >2}'.format(int(a), str(b), int(c), int(d))
     else:
         return '{0: >2} {1:} {2: >2} = {3: >2}'.format(int(a), str(b), int(c), int(d))
 
@@ -108,11 +115,14 @@ def generate_topic(number=100):
 
 
 if __name__ == '__main__':
-    pass
-    number_files = 50
+
+    # 检查导出文件夹是否存在
+    checkup_dir(project_root_dir() + '/dist/')
+    # 构建文件份数
+    documents_count = 50
     print("文档操作助手")
-    for i in range(1, number_files + 1):
-        print("已经完成: " + str(i) + "/" + str(str(i)))
+    for i in range(1, documents_count + 1):
+        print("已经完成: " + str(i) + "/" + str(documents_count))
         generate_topic()
         time.sleep(1)
     print("创建操作完成")
