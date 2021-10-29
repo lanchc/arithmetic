@@ -57,7 +57,7 @@ def format_topic_text(a, b, c, d):
 
 
 # 随机题目
-def random_topic(answer_max=20):
+def random_topic(answer_max):
 
     is_complete = True
     topic_str = ''
@@ -67,8 +67,8 @@ def random_topic(answer_max=20):
 
         symbol_array = ['-', '+']
         kw_sy = random.choice(symbol_array)
-        kw_aa = random.randint(0, 20)
-        kw_bb = random.randint(0, 20)
+        kw_aa = random.randint(0, answer_max)
+        kw_bb = random.randint(0, answer_max)
         kw_cc = compute_symbol(kw_aa, kw_bb, kw_sy)
         # 是否需要跳过执行下一次
         if kw_sy == '-' and kw_aa < kw_bb:
@@ -86,7 +86,7 @@ def random_topic(answer_max=20):
 
 
 # 构建数据
-def generate_topic(number=100):
+def generate_topic(number=100, answer_max=20):
     # 读取文档
     template_docx = Document(template_path())
     # 字体样式
@@ -103,7 +103,7 @@ def generate_topic(number=100):
         remainder = k % 4
 
         r_cells = write_table.rows[write_next_row].cells
-        r_cells[remainder].text = random_topic()
+        r_cells[remainder].text = random_topic(answer_max)
         r_cells[remainder].paragraphs[0].paragraph_format.alignment = WD_TABLE_ALIGNMENT.CENTER
 
         # 四题下移
