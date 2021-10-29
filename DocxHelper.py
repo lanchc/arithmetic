@@ -47,11 +47,11 @@ def compute_symbol(a, b, k):
 def format_topic_text(a, b, c, d):
     style_rd = random.randint(1, 3)
     if 1 == style_rd:
-        return '{0: >2} {1:} {2: >2} = (   )'.format(int(a), str(b), int(c), int(d))
+        return '{0: >2} {1:} {2: >2} = （   ）'.format(int(a), str(b), int(c), int(d))
     elif 2 == style_rd:
-        return '(   ) {1:} {2: >2} = {3: >2}'.format(int(a), str(b), int(c), int(d))
+        return '（   ） {1:} {2: >2} = {3: >2}'.format(int(a), str(b), int(c), int(d))
     elif 3 == style_rd:
-        return '{0: >2} {1:} (   ) = {3: >2}'.format(int(a), str(b), int(c), int(d))
+        return '{0: >2} {1:} （   ）= {3: >2}'.format(int(a), str(b), int(c), int(d))
     else:
         return '{0: >2} {1:} {2: >2} = {3: >2}'.format(int(a), str(b), int(c), int(d))
 
@@ -118,8 +118,10 @@ if __name__ == '__main__':
 
     # 检查导出文件夹是否存在
     checkup_dir(project_root_dir() + '/dist/')
+
     # 构建文件份数
-    documents_count = 50
+    documents_count = 5
+
     print("文档操作助手")
     for i in range(1, documents_count + 1):
         print("已经完成: " + str(i) + "/" + str(documents_count))
