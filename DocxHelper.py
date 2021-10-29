@@ -93,9 +93,9 @@ def generate_topic(number=100, answer_max=20):
     template_docx.styles['Normal'].font.name = u'Courier New'
     template_docx.styles['Normal'].font.size = Pt(12)
     template_docx.styles['Normal'].font.color.rgb = RGBColor(33, 33, 33)
-
+    # 首个表格
     write_table = template_docx.tables[0]
-
+    # 跳过标题
     write_next_row = 1
 
     # 插入更新内容
