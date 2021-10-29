@@ -70,10 +70,10 @@ def random_topic(answer_max):
         kw_aa = random.randint(0, answer_max)
         kw_bb = random.randint(0, answer_max)
         kw_cc = compute_symbol(kw_aa, kw_bb, kw_sy)
-        # 是否需要跳过执行下一次
+        # 朝纲过滤 - 被减数小于减数
         if kw_sy == '-' and kw_aa < kw_bb:
             is_skip = False
-        # 超出要求
+        # 朝纲过滤 - 总和超过限制
         if kw_cc > answer_max:
             is_skip = False
 
