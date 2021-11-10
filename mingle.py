@@ -85,7 +85,7 @@ def generate_topic_mingle(number=63, row_max=3, template_name='template_more.doc
     # 跳过标题
     write_next_row = 1
     write_next_tag = row_max - 1
-
+    
     # 插入更新内容
     for k in range(number):
         remainder = k % row_max
