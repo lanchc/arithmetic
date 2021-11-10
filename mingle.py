@@ -73,13 +73,13 @@ def random_mingle_topic(answer_max=10, limit_upper=20):
 
 
 # 构建数据
-def generate_topic_mingle(number=69, row_max=3, template_name='template_more.docx'):
+def generate_topic_mingle(number=63, row_max=3, template_name='template_more.docx'):
     # 读取文档
     template_docx = Document(template_path(template_name))
     # 字体样式
-    # template_docx.styles['Normal'].font.name = u'Times New Roman'
-    # template_docx.styles['Normal'].font.size = Pt(10.5)
-    # template_docx.styles['Normal'].font.color.rgb = RGBColor(33, 33, 33)
+    template_docx.styles['Normal'].font.name = u'Courier New'
+    template_docx.styles['Normal'].font.size = Pt(12)
+    template_docx.styles['Normal'].font.color.rgb = RGBColor(33, 33, 33)
     # 首个表格
     write_table = template_docx.tables[0]
     # 跳过标题
