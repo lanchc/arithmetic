@@ -73,12 +73,12 @@ def random_mingle_topic(answer_max=10, limit_upper=20):
 
 
 # 构建数据
-def generate_topic_mingle(number=63, row_max=3, template_name='template_more.docx'):
+def generate_topic_mingle(number=75, row_max=3, template_name='template_more.docx'):
     # 读取文档
     template_docx = Document(template_path(template_name))
     # 字体样式
     template_docx.styles['Normal'].font.name = u'Courier New'
-    template_docx.styles['Normal'].font.size = Pt(12)
+    template_docx.styles['Normal'].font.size = Pt(10)
     template_docx.styles['Normal'].font.color.rgb = RGBColor(33, 33, 33)
     # 首个表格
     write_table = template_docx.tables[0]
@@ -108,7 +108,7 @@ if __name__ == '__main__':
     checkup_dir(project_root_dir() + '/dist/')
 
     # 构建文件份数
-    documents_count = 50
+    documents_count = 2
 
     print("文档操作助手")
     for i in range(1, documents_count + 1):
