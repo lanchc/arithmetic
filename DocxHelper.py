@@ -4,13 +4,14 @@
 import time
 from docx import Document
 from docx.shared import Pt, RGBColor
+from docx.shared import Cm
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from dir_helper import *
 from math_helper import *
 
 
 # 随机题目
-def random_topic(answer_max=20):
+def random_topic(answer_max):
 
     is_complete = True
     topic_str = ''
@@ -39,11 +40,12 @@ def random_topic(answer_max=20):
 
 
 # 构建数据
-def generate_topic(number=100, answer_max=20):
+def generate_topic(number=100, answer_max=10):
     # 读取文档
     template_docx = Document(template_path())
     # 字体样式
-    template_docx.styles['Normal'].font.name = u'Courier New'
+    # template_docx.styles['Normal'].font.name = u'Courier New'
+    template_docx.styles['Normal'].font.name = u'Helvetica'
     template_docx.styles['Normal'].font.size = Pt(10)
     template_docx.styles['Normal'].font.color.rgb = RGBColor(33, 33, 33)
     # 首个表格
@@ -58,7 +60,8 @@ def generate_topic(number=100, answer_max=20):
         r_cells = write_table.rows[write_next_row].cells
         r_cells[remainder].text = random_topic(answer_max)
         r_cells[remainder].paragraphs[0].paragraph_format.alignment = WD_TABLE_ALIGNMENT.CENTER
-
+        #设置行高
+        write_table.rows[write_next_row].height=Cm(0.24)
         # 四题下移
         if 3 == remainder:
             write_next_row += 1
@@ -73,7 +76,7 @@ if __name__ == '__main__':
     checkup_dir(project_root_dir() + '/dist/')
 
     # 构建文件份数
-    documents_count = 50
+    documents_count = 2
 
     print("文档操作助手")
     for i in range(1, documents_count + 1):
