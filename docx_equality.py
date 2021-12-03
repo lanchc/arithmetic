@@ -35,7 +35,9 @@ def format_basics_text(a, b, c, d, sym_a, sym_b):
         return '{0: >2} {1:} {2: >2} = {3: >2} {4:} {5: >2} '.format(int(a), str(sym_a), int(b), int(c), str(sym_b), int(d))
 
 
-def random_subject(range_number=10):
+# range_number 单个数字上限
+# max_number 计算和上限
+def random_subject(range_number=10, max_number=10):
 
     is_complete = True
     topic_str = ''
@@ -56,6 +58,10 @@ def random_subject(range_number=10):
         if temp_l_sym == '-' and tmp_aa < tmp_bb:
             is_skip = False
 
+        # 朝纲啦 限制最大值
+        if temp_zz > max_number:
+            is_skip = False
+
         # 等式无法构建
         if temp_r_sym == '+' and tmp_cc > temp_zz:
             is_skip = False
@@ -67,8 +73,9 @@ def random_subject(range_number=10):
         # 计算最后一个数据
         tmp_dd = compute_outcome_back(temp_zz, tmp_cc, temp_r_sym)
 
-
-
+        # 朝纲啦 限制最大值
+        if tmp_dd > max_number:
+            is_skip = False
 
         # 构建题目
         if is_skip:
@@ -117,7 +124,7 @@ if __name__ == '__main__':
     checkup_dir(project_root_dir() + '/dist/')
 
     # 构建文件份数
-    documents_count = 50
+    documents_count = 20
 
     print("文档操作助手")
     for i in range(1, documents_count + 1):
