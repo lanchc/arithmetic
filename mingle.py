@@ -108,7 +108,7 @@ if __name__ == '__main__':
     checkup_dir(project_root_dir() + '/dist/')
 
     # 构建文件份数
-    documents_count = 50
+    documents_count = 30
 
     print("文档操作助手")
     for i in range(1, documents_count + 1):
