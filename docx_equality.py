@@ -123,6 +123,12 @@ if __name__ == '__main__':
     # 检查导出文件夹是否存在
     checkup_dir(project_root_dir() + '/dist/')
 
+    # print(random_subject())
+    # print(random_subject())
+    # print(random_subject())
+    # print(random_subject())
+
+
     # 构建文件份数
     documents_count = 20
 
